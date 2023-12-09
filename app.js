@@ -1,5 +1,5 @@
 import express from 'express';
-import { appRoutes } from './src/routes/app.routes.js';
+import { appRoutes } from './src/application/routes/app.routes.js';
 import dotenv from 'dotenv';
 import './src/data/config/connection.config.js';
 

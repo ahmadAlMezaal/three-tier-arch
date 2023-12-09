@@ -1,4 +1,4 @@
-import { movieRepository } from "../data/repositories/movie.repository.js";
+import { movieRepository } from "../../data/repositories/movie.repository.js";
 
 const getAllMovies = () => {
     return movieRepository.findAll();
