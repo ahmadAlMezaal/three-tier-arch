@@ -3,4 +3,4 @@ import { moviesRoutes } from './movie.routes.js';
 
 export const appRoutes = express.Router();
 
-appRoutes.get('/movies', moviesRoutes);
+appRoutes.use('/movies', moviesRoutes);
