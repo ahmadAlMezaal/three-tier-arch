@@ -1,29 +1,27 @@
-let movies = [];
+import { movieRepository } from "../data/repositories/movie.repository.js";
 
 const getAllMovies = () => {
-    return movies;
+    return movieRepository.findAll();
+};
+
+const getMovie = (id) => {
+    return movieRepository.findOne(id);
 };
 
 const addMovie = (movieName) => {
-    return movies.push(movieName);
+    return movieRepository.add(movieName);
 };
 
-const deleteMovie = (index) => {
-    if (index >= 0 && index < movies.length) {
-        movies.splice(index, 1);
-        return true;
-    } else {
-        return false;
-    }
+const deleteMovie = (_id) => {
+    return movieRepository.deleteOne(_id)
 };
 
-const editMovie = (index, movieName) => {
-    if (index >= 0 && index < movies.length) {
-        movies[index] = movieName;
-        res.json({ message: `${movieName} movie updated successfully` });
-    } else {
-        res.status(404).json({ message: 'Movie not found' });
+const editMovie = async (id, movieName) => {
+    const movie = await getMovie(id);
+    if (!movie) {
+        return null;
     }
+    return await movieRepository.updateName(id, movieName);
 };
 
 export const movieService = {
@@ -31,4 +29,5 @@ export const movieService = {
     deleteMovie,
     editMovie,
     addMovie,
+    getMovie,
 };
